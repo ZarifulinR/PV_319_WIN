@@ -16,8 +16,8 @@ namespace Clock
 		{
 			InitializeComponent();
 			labelTime.BackColor = Color.AliceBlue;
-
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
+			SetVisibility(false);
 		}
 		void SetVisibility(bool visible)
 		{
@@ -28,7 +28,6 @@ namespace Clock
 			this.FormBorderStyle = visible ? FormBorderStyle.FixedToolWindow : FormBorderStyle.None;
 			this.ShowInTaskbar = visible;
 		}
-
 		private void timer_Tick(object sender, EventArgs e)
 		{
 			labelTime.Text = DateTime.Now.ToString
@@ -49,7 +48,6 @@ namespace Clock
 			}
 			notifyIcon.Text = labelTime.Text;
 		}
-
 		private void btnHideControls_Click(object sender, EventArgs e)
 		{
 			//cbShowDate.Visible = false;
@@ -59,9 +57,9 @@ namespace Clock
 			//labelTime.BackColor = Color.AliceBlue;
 			//this.ShowInTaskbar = false;
 
-			SetVisibility(false);
+			//SetVisibility(false);
+			SetVisibility(cmShowControls.Checked = false);
 		}
-
 		private void labelTime_DoubleClick(object sender, EventArgs e)
 		{
 			//MessageBox.Show
@@ -80,29 +78,24 @@ namespace Clock
 			//labelTime.BackColor = Color.AliceBlue;
 			//this.ShowInTaskbar = true;
 
-			SetVisibility(true);
+			SetVisibility(cmShowControls.Checked = true);
 		}
-
 		private void cmExit_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
-
 		private void cmTopmost_CheckedChanged(object sender, EventArgs e)
 		{
 			this.TopMost = cmTopmost.Checked;
 		}
-
 		private void cmShowDate_CheckedChanged(object sender, EventArgs e)
 		{
 			cbShowDate.Checked = cmShowDate.Checked;
 		}
-
 		private void cbShowDate_CheckedChanged(object sender, EventArgs e)
 		{
 			cmShowDate.Checked = cbShowDate.Checked;
 		}
-
 		private void cmShowWeekDay_CheckedChanged(object sender, EventArgs e)
 		{
 			cbShowWeekDay.Checked = cmShowWeekDay.Checked;
@@ -112,7 +105,6 @@ namespace Clock
 		{
 			cmShowWeekDay.Checked = cbShowWeekDay.Checked;
 		}
-
 		private void notifyIcon_DoubleClick(object sender, EventArgs e)
 		{
 			if (!this.TopMost)
@@ -121,5 +113,32 @@ namespace Clock
 				this.TopMost = false;
 			}
 		}
+		private void cmShowControls_CheckedChanged(object sender, EventArgs e)
+		{
+			SetVisibility(cmShowControls.Checked);
+		}
+
+		private void SetColor(object sender, EventArgs e)
+		{
+			ColorDialog dialog = new ColorDialog();
+			dialog.Color = labelTime.BackColor;
+			switch ((sender as ToolStripMenuItem).Text)
+			{
+					case "Background color": dialog.Color=labelTime.BackColor  ;break;
+					case "Foreground color": dialog.Color=labelTime.ForeColor  ;break;
+
+			}
+			if (dialog.ShowDialog() == DialogResult.OK)
+			{
+				switch ((sender as ToolStripMenuItem).Text)
+				{
+					case "Background color":labelTime.BackColor = dialog.Color;break;
+					case "Foreground color":labelTime.ForeColor = dialog.Color;break;
+				}
+			}
+
+		}
+
+	
 	}
 }
