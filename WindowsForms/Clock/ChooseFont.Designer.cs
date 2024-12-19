@@ -48,6 +48,7 @@ namespace Clock
 			this.cbFonts.Name = "cbFonts";
 			this.cbFonts.Size = new System.Drawing.Size(692, 24);
 			this.cbFonts.TabIndex = 0;
+			this.cbFonts.DropDown += new System.EventHandler(this.cbFonts_DropDown);
 			this.cbFonts.SelectedIndexChanged += new System.EventHandler(this.cbFonts_SelectedIndexChanged);
 			// 
 			// nudFontSize
@@ -85,6 +86,7 @@ namespace Clock
 			this.labelExample.Size = new System.Drawing.Size(176, 46);
 			this.labelExample.TabIndex = 4;
 			this.labelExample.Text = "Example";
+			this.labelExample.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.labelExample_ControlAdded);
 			// 
 			// btnOK
 			// 

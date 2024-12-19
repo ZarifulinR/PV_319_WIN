@@ -16,7 +16,8 @@ namespace Clock
 		{
 			InitializeComponent();
 			labelTime.BackColor = Color.AliceBlue;
-			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
+			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width + Screen.AllScreens[0].Bounds.Width - this.Width, 50);
+			//this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
 			SetVisibility(false);
 		}
 		void SetVisibility(bool visible)
@@ -139,6 +140,11 @@ namespace Clock
 
 		}
 
-	
+		private void cmFonys_Click(object sender, EventArgs e)
+		{
+			ChooseFontForm nit = new ChooseFontForm();
+			nit.ShowDialog();
+			
+		}
 	}
 }
