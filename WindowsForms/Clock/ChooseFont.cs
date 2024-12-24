@@ -43,16 +43,10 @@ namespace Clock
 
 			string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + "..\\",format);
 			for (int i = 0; i < files.Length; i++)
-			{
+			
 				files[i] = files[i].Split('\\').Last();
-			}
+			
 			return files;
-		}
-		private void btnOK_Click(object sender, EventArgs e)
-		{
-			cbFonts_SelectedIndexChanged(sender, e);
-			Font = labelExample.Font;
-			Filename = cbFonts.SelectedItem.ToString();
 		}
 
 		private void cbFonts_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,6 +55,13 @@ namespace Clock
 			string full_name = $"{Directory.GetCurrentDirectory()}\\{cbFonts.SelectedItem}";
 			pfc.AddFontFile(full_name);
 			labelExample.Font = new Font(pfc.Families[0], Convert.ToInt32(nudFontSize.Value));
+		}
+		private void btnOK_Click(object sender, EventArgs e)
+		{
+			cbFonts_SelectedIndexChanged(sender, e);
+			Font = labelExample.Font;
+			Filename = cbFonts.SelectedItem.ToString();
+		
 		}
 
 		private void nudFontSize_ValueChanged(object sender, EventArgs e)

@@ -130,7 +130,6 @@ namespace Clock
 			this.cbFonts.Size = new System.Drawing.Size(661, 24);
 			this.cbFonts.TabIndex = 0;
 			this.cbFonts.UseWaitCursor = true;
-			this.cbFonts.SelectedIndexChanged += new System.EventHandler(this.cbFonts_SelectedIndexChanged);
 			// 
 			// btnAapply
 			// 
