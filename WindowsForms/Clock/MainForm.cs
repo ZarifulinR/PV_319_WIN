@@ -27,7 +27,7 @@ namespace Clock
 
 			cmShowConsole.Checked = true;
 			
-			//LoadSettings();
+			LoadSettings();
 			fontDialog = new ChooseFontForm();
 		}
 		void SetVisibility(bool visible)
@@ -48,7 +48,7 @@ namespace Clock
 			sw.WriteLine($"{cmShowWeekDay.Checked}");
 			sw.WriteLine($"{cmShowConsole.Checked}");
 			sw.WriteLine($"{labelTime.BackColor.ToArgb()}");
-			sw.WriteLine($"{labelTime.BackColor.ToArgb()}");
+			sw.WriteLine($"{labelTime.ForeColor.ToArgb()}");
 			sw.WriteLine($"{fontDialog.Filename}");
 			sw.WriteLine($"{labelTime.Font.Size}");
 			sw.Close();

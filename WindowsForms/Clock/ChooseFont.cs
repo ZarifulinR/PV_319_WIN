@@ -20,7 +20,7 @@ namespace Clock
 		{
 			InitializeComponent();
 			LoadFonts();
-			//cbFonts.SelectedIndex = 0;
+			cbFonts.SelectedIndex = 0;
 		}
 		public ChooseFontForm(string font_name, int font_size)
 		{
