@@ -71,7 +71,7 @@ namespace Clock
 			string font_name = sr.ReadLine();
 			int font_size = (int)Convert.ToDouble(sr.ReadLine());
 			sr.Close();
-			fontDialog = new ChooseFontForm(font_name,font_size);
+			fontDialog = new ChooseFontForm(this, font_name,font_size);
 			labelTime.Font = fontDialog.Font;
 		}
 		private void timer_Tick(object sender, EventArgs e)
