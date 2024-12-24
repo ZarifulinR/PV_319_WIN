@@ -19,33 +19,31 @@ namespace Clock
 		public ChooseFontForm()
 		{
 			InitializeComponent();
-			loadFonts();
-			cbFonts.SelectedIndex = 0;
+			LoadFonts();
+			//cbFonts.SelectedIndex = 0;
 		}
-		public ChooseFontForm(string font_name,int font_size)
+		public ChooseFontForm(string font_name, int font_size)
 		{
+			InitializeComponent();
 			Filename = font_name;
 			nudFontSize.Value = font_size;
-			InitializeComponent();
-			loadFonts();
+			LoadFonts();
 			cbFonts.SelectedIndex = cbFonts.Items.IndexOf(Filename);
 			Font = labelExample.Font;
 		}
-		void loadFonts()
+		void LoadFonts()
 		{
-			Directory.SetCurrentDirectory("..\\..\\Fonts");
+			//Directory.SetCurrentDirectory("..\\..\\Fonts");
 			Console.WriteLine(Directory.GetCurrentDirectory());
-			cbFonts.Items.AddRange(GetFontsformat("*.ttf"));
-			cbFonts.Items.AddRange(GetFontsformat("*.otf"));
-		}
-		static string[] GetFontsformat(string format)
-		{
 
-			string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + "..\\",format);
+			cbFonts.Items.AddRange(GetFontsFormat("*.ttf"));
+			cbFonts.Items.AddRange(GetFontsFormat("*.otf"));
+		}
+		static string[] GetFontsFormat(string format)
+		{
+			string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), format);
 			for (int i = 0; i < files.Length; i++)
-			
 				files[i] = files[i].Split('\\').Last();
-			
 			return files;
 		}
 
@@ -61,15 +59,14 @@ namespace Clock
 			cbFonts_SelectedIndexChanged(sender, e);
 			Font = labelExample.Font;
 			Filename = cbFonts.SelectedItem.ToString();
-		
 		}
 
-		private void nudFontSize_ValueChanged(object sender, EventArgs e)
+		private void btnApply_Click(object sender, EventArgs e)
 		{
 			cbFonts_SelectedIndexChanged(sender, e);
 		}
 
-		private void btnAapply_Click(object sender, EventArgs e)
+		private void nudFontSize_ValueChanged(object sender, EventArgs e)
 		{
 			cbFonts_SelectedIndexChanged(sender, e);
 		}
