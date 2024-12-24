@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Win32;
+
 
 namespace Clock
 {
@@ -28,7 +30,7 @@ namespace Clock
 			cmShowConsole.Checked = true;
 			
 			LoadSettings();
-			fontDialog = new ChooseFontForm();
+			//fontDialog = new ChooseFontForm();
 		}
 		void SetVisibility(bool visible)
 		{
@@ -52,11 +54,12 @@ namespace Clock
 			sw.WriteLine($"{fontDialog.Filename}");
 			sw.WriteLine($"{labelTime.Font.Size}");
 			sw.Close();
-			Process.Start("notepad", "Settings.ini");
+			//Process.Start("notepad", "Settings.ini");
 		}
 		void LoadSettings()
 		{
-			Directory.SetCurrentDirectory("..\\..\\Fonts");
+			string execution_path = Path.GetDirectoryName(Application.ExecutablePath);
+			Directory.SetCurrentDirectory($"{execution_path}\\..\\..\\Fonts");
 			StreamReader sr = new StreamReader("Settings.ini");
 			cmTopmost.Checked = bool.Parse(sr.ReadLine());
 			cmShowControls.Checked = bool.Parse(sr.ReadLine());
@@ -212,5 +215,14 @@ namespace Clock
 		{
 			SaveSettings();
 		}
-	}
+
+        private void cmLoadOnWinStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            string key_name = "ClockPV_319";
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (cmLoadOnWinStartup.Checked) rk.SetValue(key_name, Application.ExecutablePath);
+            else rk.DeleteValue(key_name, false);
+            rk.Dispose();
+        }
+    }
 }

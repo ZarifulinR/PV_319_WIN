@@ -34,7 +34,8 @@ namespace Clock
 		void LoadFonts()
 		{
 			//Directory.SetCurrentDirectory("..\\..\\Fonts");
-			Console.WriteLine(Directory.GetCurrentDirectory());
+			string current_dir = Directory.GetCurrentDirectory();
+			Console.WriteLine(current_dir);
 
 			cbFonts.Items.AddRange(GetFontsFormat("*.ttf"));
 			cbFonts.Items.AddRange(GetFontsFormat("*.otf"));
@@ -61,14 +62,9 @@ namespace Clock
 			Filename = cbFonts.SelectedItem.ToString();
 		}
 
-		private void btnApply_Click(object sender, EventArgs e)
-		{
+        private void btnapply_Click(object sender, EventArgs e)
+        {
 			cbFonts_SelectedIndexChanged(sender, e);
 		}
-
-		private void nudFontSize_ValueChanged(object sender, EventArgs e)
-		{
-			cbFonts_SelectedIndexChanged(sender, e);
-		}
-	}
+    }
 }
