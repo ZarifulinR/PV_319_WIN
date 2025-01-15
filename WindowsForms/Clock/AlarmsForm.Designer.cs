@@ -63,7 +63,7 @@ namespace Clock
 			this.Add.TabIndex = 2;
 			this.Add.Text = "Add";
 			this.Add.UseVisualStyleBackColor = true;
-			this.Add.Click += new System.EventHandler(this.Add_Click);
+			this.Add.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
 			// Delete
 			// 

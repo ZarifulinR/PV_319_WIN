@@ -6,43 +6,42 @@ using System.Threading.Tasks;
 
 namespace Clock
 {
-	class Week
+	public class Week
 	{
 		public static readonly string[] Weekdays = new string[] { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" };
 		byte week;
-		public Week(bool[] days)
-		{
-			CompressWeekDays(days);
-		}
 		public Week()
 		{
 			week=0;
 		}
-		public void SetDay(int day)
+		public Week(bool[] days)
 		{
-			if (day > 6) return;
-			week |=(byte)(1<< day) ;
+			CompressWeekDays(days);
 		}
+		
 		public void CompressWeekDays(bool[] days)
 		{
+			
 			for(byte i=0;i<days.Length;i++)
 			{
-				//byte day = 1;
-				//if (days[i]) week &= (byte)(day << i);
-				if (days[i]) SetDay(i);
+				
+				if (days[i]) week |= (byte)(1 << i);
+			
 			}
 		}
 		public override string ToString()
 		{
 			string weekdays = "";
 
-			for(int i = 0;i<Weekdays.Length;i++)
+			for(byte i = 0;i<Weekdays.Length;i++)
 			{
 				
 				if (((1 << i) & week) != 0)
-					weekdays += Weekdays[i];
+					weekdays += $"{Weekdays[i]},";
 			}
-			return weekdays;
+			return weekdays.Remove(weekdays.Length - 1, 1);
+			//return weekdays;
+			
 		}
 	}
 }
