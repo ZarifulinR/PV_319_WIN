@@ -73,7 +73,7 @@ namespace Clock
 			this.dtpTime.ShowUpDown = true;
 			this.dtpTime.Size = new System.Drawing.Size(200, 38);
 			this.dtpTime.TabIndex = 2;
-			this.dtpTime.Value = new System.DateTime(2025, 1, 13, 12, 15, 0, 0);
+			this.dtpTime.Value = new System.DateTime(2025, 1, 16, 14, 54, 51, 0);
 			// 
 			// lblAlarmFile
 			// 

@@ -39,8 +39,8 @@ namespace Clock
 				if (((1 << i) & week) != 0)
 					weekdays += $"{Weekdays[i]},";
 			}
-			return weekdays.Remove(weekdays.Length - 1, 1);
-			//return weekdays;
+			//return weekdays.Remove(weekdays.Length - 1, 1);
+			return weekdays;
 			
 		}
 	}
