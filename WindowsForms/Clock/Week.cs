@@ -29,6 +29,16 @@ namespace Clock
 			
 			}
 		}
+		public bool[] ExtractWeecDays()
+		{
+			bool[] weekDasys = new bool[7];
+			for(byte i=0;i<7;i++)
+			{
+				weekDasys[i] = (week &(byte)(1<<i))!=0;
+				
+			}
+			return weekDasys;
+		}
 		public override string ToString()
 		{
 			string weekdays = "";

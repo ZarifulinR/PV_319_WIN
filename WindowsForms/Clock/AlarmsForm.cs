@@ -42,6 +42,33 @@ namespace Clock
 			}
 		}
 
+		private void lbAlarms_DoubleClick(object sender, EventArgs e)
+		{
+			if (lbAlarms.Items.Count > 0)
+			{
+				if (lbAlarms.SelectedItem != null)
+				{
 
+					addAlarm.Alarm = lbAlarms.SelectedItem as Alarm;
+					if (addAlarm.ShowDialog() == DialogResult.OK)
+					{
+						lbAlarms.Items[lbAlarms.SelectedIndex] = addAlarm.Alarm;
+						//lbAlarms.Refresh();
+					}
+				}
+					else MessageBox.Show(this, "Выберите будильник", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else btnAdd_Click(sender, e);
+		}
+
+		private void Delete_Click(object sender, EventArgs e)
+		{
+			lbAlarms.Items.Remove(lbAlarms.SelectedItem);
+		}
+
+		private void lbAlarms_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Delete) Delete_Click(sender, e);
+		}
 	}
 }

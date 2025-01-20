@@ -44,6 +44,8 @@ namespace Clock
 			this.lbAlarms.Size = new System.Drawing.Size(341, 84);
 			this.lbAlarms.TabIndex = 0;
 			this.lbAlarms.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+			this.lbAlarms.DoubleClick += new System.EventHandler(this.lbAlarms_DoubleClick);
+			this.lbAlarms.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbAlarms_KeyDown);
 			// 
 			// OK
 			// 
@@ -73,6 +75,7 @@ namespace Clock
 			this.Delete.TabIndex = 3;
 			this.Delete.Text = "Delete";
 			this.Delete.UseVisualStyleBackColor = true;
+			this.Delete.Click += new System.EventHandler(this.Delete_Click);
 			// 
 			// AlarmsForm
 			// 
