@@ -37,6 +37,19 @@ namespace Clock
 			Console.WriteLine($"CopyConstructor:{this.GetHashCode()}");
 
 		}
+		//public static bool operator == (Alarm left,Alarm right)
+		//{
+		//	return
+		//		left.Date == right.Date &&
+		//		left.Time == right.Time &&
+		//		left.Weekdays == right.Weekdays &&
+		//		left.Filename == right.Filename &&
+		//		left.Message == right.Message;
+		//}
+		//public static bool operator !=(Alarm left, Alarm right)
+		//{
+		//	return !(left == right);
+		//}
 		public override string ToString()
 		{
 			string info = "";
@@ -49,28 +62,7 @@ namespace Clock
 			info += $"{Message}\t";
 			return info;
 		}
-		//public static bool operator >(Alarm left, Alarm right)
-		//{
-		//	if (left.Date != DateTime.MinValue || right.Date != DateTime.MinValue)
-		//	{
-		//		return 
-		//			(left.Date == DateTime.MinValue ? DateTime.Today : left.Date) >=
-		//			(right.Date == DateTime.MinValue ? DateTime.Today: right.Date) &&
-		//			left.Time > right.Time;
-		//	}
-		//	else return left.Time > right.Time;
-		//}
-		//public static bool operator <(Alarm left, Alarm right)
-		//{
-		//	if (left.Date != DateTime.MinValue || right.Date != DateTime.MinValue)
-		//	{
-		//		return
-		//			(left.Date == DateTime.MinValue ? DateTime.Today : left.Date) <=
-		//			(right.Date == DateTime.MinValue ? DateTime.Today : right.Date) &&
-		//			left.Time < right.Time;
-		//	}
-		//	else return left.Time < right.Time;
-		//}
+		
 		
 		public int CompareTo(Alarm other)
 		{

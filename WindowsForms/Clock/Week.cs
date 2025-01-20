@@ -12,7 +12,8 @@ namespace Clock
 		byte week;
 		public Week()
 		{
-			week=0;
+			week=191;
+			week+=192;
 		}
 		public Week(bool[] days)
 		{
@@ -38,6 +39,13 @@ namespace Clock
 				
 			}
 			return weekDasys;
+		}
+		public bool Contains(DayOfWeek day)
+		{
+			int i_day = (int)day;
+			i_day -= 1;
+			if (i_day == -1) i_day = 6;
+			return(week &(1<<i_day)) != 6;
 		}
 		public override string ToString()
 		{

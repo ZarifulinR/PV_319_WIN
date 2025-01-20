@@ -10,15 +10,16 @@ using System.Windows.Forms;
 
 namespace Clock
 {
-	 partial class AddAlarmForm : Form
+	partial class AddAlarmForm : Form
 	{
 		Alarm alarm = null;
-		public Alarm Alarm  { get; set; }
+		public Alarm Alarm { get; set; }
 		OpenFileDialog open = null;
 		public AddAlarmForm()
 		{
 			InitializeComponent();
 			dtpDate.Enabled = false;
+
 			Alarm = new Alarm();
 			open = new OpenFileDialog();
 			open.Filter = " Sound files(*.mp3,*wav,*flac)|*mp3;*.wav;*.flac|MP-3(*.mp3)|*.WAV(*.wav)|Flac(*.flac)|*.flac";
@@ -27,10 +28,11 @@ namespace Clock
 		private void cbUseDate_CheckedChanged(object sender, EventArgs e)
 		{
 			dtpDate.Enabled = cbUseDate.Checked;
+			clbWeekDays.Enabled = !cbUseDate.Checked;
 		}
-		void SettWeekDays(bool[]week )
+		void SettWeekDays(bool[] week)
 		{
-			for (int i=0;i<clbWeekDays.Items.Count;i++)
+			for (int i = 0; i < clbWeekDays.Items.Count; i++)
 			{
 				clbWeekDays.SetItemChecked(i, week[i]);
 			}
@@ -51,7 +53,7 @@ namespace Clock
 			Alarm.Weekdays = week;
 			Alarm.Filename = lblAlarmFile.Text;
 			Alarm.Message = rtbMessage.Text;
-			if (Alarm.Filename == ""|| Alarm.Filename=="File:")
+			if (Alarm.Filename == "" || Alarm.Filename == "File:")
 			{
 				this.DialogResult = DialogResult.None;
 				MessageBox.Show
@@ -63,13 +65,13 @@ namespace Clock
 					MessageBoxIcon.Warning
 					);
 			}
-			
+
 
 		}
 
 		private void btnFile_Click(object sender, EventArgs e)
 		{
-			if (open.ShowDialog()== DialogResult.OK)
+			if (open.ShowDialog() == DialogResult.OK)
 			{
 				lblAlarmFile.Text = open.FileName;
 			}
@@ -77,12 +79,16 @@ namespace Clock
 
 		private void AddAlarmForm_Load(object sender, EventArgs e)
 		{
+			for (int i = 0; i < clbWeekDays.Items.Count; i++)
+			{
+				clbWeekDays.SetItemChecked(i, true);
+			}
 			if (Alarm.Date != DateTime.MinValue)
 			{
 				cbUseDate.Checked = true;
 				dtpTime.Value = Alarm.Date;
 			}
-			dtpTime.Value = DateTime.Now.Date + Alarm.Time ;
+			dtpTime.Value = DateTime.Now.Date + Alarm.Time;
 			SettWeekDays(Alarm.Weekdays.ExtractWeecDays());
 			lblAlarmFile.Text = Alarm.Filename;
 			rtbMessage.Text = Alarm.Message;
