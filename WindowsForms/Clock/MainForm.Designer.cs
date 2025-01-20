@@ -44,6 +44,7 @@
 			this.cmForeColor = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmShowConsole = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmLoadOnWinStartup = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmAlarm = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,8 +54,9 @@
 			this.btnHideControls = new System.Windows.Forms.Button();
 			this.cbShowWeekDay = new System.Windows.Forms.CheckBox();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-			this.cmAlarm = new System.Windows.Forms.ToolStripMenuItem();
+			this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
 			this.contextMenu.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelTime
@@ -91,7 +93,7 @@
             this.toolStripSeparator4,
             this.toolStripSeparator5});
 			this.contextMenu.Name = "contextMenu";
-			this.contextMenu.Size = new System.Drawing.Size(245, 302);
+			this.contextMenu.Size = new System.Drawing.Size(245, 274);
 			// 
 			// cmTopmost
 			// 
@@ -181,6 +183,13 @@
 			this.cmLoadOnWinStartup.Text = "Load of Windows startup";
 			this.cmLoadOnWinStartup.CheckedChanged += new System.EventHandler(this.cmLoadOnWinStartup_CheckedChanged);
 			// 
+			// cmAlarm
+			// 
+			this.cmAlarm.Name = "cmAlarm";
+			this.cmAlarm.Size = new System.Drawing.Size(244, 24);
+			this.cmAlarm.Text = "Alarms";
+			this.cmAlarm.Click += new System.EventHandler(this.cmAlarm_Click);
+			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -224,7 +233,7 @@
 			// btnHideControls
 			// 
 			this.btnHideControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnHideControls.Location = new System.Drawing.Point(16, 313);
+			this.btnHideControls.Location = new System.Drawing.Point(16, 290);
 			this.btnHideControls.Margin = new System.Windows.Forms.Padding(4);
 			this.btnHideControls.Name = "btnHideControls";
 			this.btnHideControls.Size = new System.Drawing.Size(248, 75);
@@ -254,18 +263,21 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
 			// 
-			// cmAlarm
+			// axWindowsMediaPlayer
 			// 
-			this.cmAlarm.Name = "cmAlarm";
-			this.cmAlarm.Size = new System.Drawing.Size(244, 24);
-			this.cmAlarm.Text = "Alarms";
-			this.cmAlarm.Click += new System.EventHandler(this.cmAlarm_Click);
+			this.axWindowsMediaPlayer.Enabled = true;
+			this.axWindowsMediaPlayer.Location = new System.Drawing.Point(21, 82);
+			this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
+			this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
+			this.axWindowsMediaPlayer.Size = new System.Drawing.Size(252, 47);
+			this.axWindowsMediaPlayer.TabIndex = 4;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(401, 422);
+			this.Controls.Add(this.axWindowsMediaPlayer);
 			this.Controls.Add(this.cbShowWeekDay);
 			this.Controls.Add(this.btnHideControls);
 			this.Controls.Add(this.cbShowDate);
@@ -279,6 +291,7 @@
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.contextMenu.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -310,6 +323,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cmShowConsole;
         private System.Windows.Forms.ToolStripMenuItem cmLoadOnWinStartup;
 		private System.Windows.Forms.ToolStripMenuItem cmAlarm;
+		private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
 	}
 }
 

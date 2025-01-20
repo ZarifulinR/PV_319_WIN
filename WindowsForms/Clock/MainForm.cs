@@ -36,6 +36,7 @@ namespace Clock
 			//fontDialog = new ChooseFontForm();
 			alarms = new AlarmsForm();
 			//Console.WriteLine(DateTime.MinValue);
+			axWindowsMediaPlayer.Visible = false;
 		}
 			void SetVisibility(bool visible)
 		{
@@ -84,6 +85,13 @@ namespace Clock
 			Alarm[] actualAlarms = alarms.LB_Alarms.Items.Cast<Alarm>().Where(a=>a.Time>DateTime.Now.TimeOfDay).ToArray();
 			return actualAlarms.Min();
 		}
+		void PlayAlarm()
+		{
+			axWindowsMediaPlayer.URL = nextAlarm.Filename;
+			axWindowsMediaPlayer.settings.volume = 100;
+			axWindowsMediaPlayer.Ctlcontrols.play();
+			axWindowsMediaPlayer.Visible = true;
+		}
 		private void timer_Tick(object sender, EventArgs e)
 		{
 			labelTime.Text = DateTime.Now.ToString
@@ -112,7 +120,8 @@ namespace Clock
 				)
 			{
 				System.Threading.Thread.Sleep(1000);
-				MessageBox.Show(this , nextAlarm.ToString(), "Alarm",MessageBoxButtons.OK,MessageBoxIcon.Information);
+				//MessageBox.Show(this , nextAlarm.ToString(), "Alarm",MessageBoxButtons.OK,MessageBoxIcon.Information);
+				PlayAlarm();
 				nextAlarm = null;
 			}
 
