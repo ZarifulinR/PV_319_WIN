@@ -77,21 +77,21 @@
 			// 
 			this.contextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
 			this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmTopmost,
-            this.cmShowControls,
-            this.toolStripSeparator1,
-            this.cmShowDate,
-            this.cmShowWeekDay,
-            this.cmChoosFont,
-            this.toolStripSeparator3,
-            this.cmColors,
-            this.cmShowConsole,
-            this.cmLoadOnWinStartup,
-            this.cmAlarm,
-            this.toolStripSeparator2,
-            this.cmExit,
-            this.toolStripSeparator4,
-            this.toolStripSeparator5});
+			this.cmTopmost,
+			this.cmShowControls,
+			this.toolStripSeparator1,
+			this.cmShowDate,
+			this.cmShowWeekDay,
+			this.cmChoosFont,
+			this.toolStripSeparator3,
+			this.cmColors,
+			this.cmShowConsole,
+			this.cmLoadOnWinStartup,
+			this.cmAlarm,
+			this.toolStripSeparator2,
+			this.cmExit,
+			this.toolStripSeparator4,
+			this.toolStripSeparator5});
 			this.contextMenu.Name = "contextMenu";
 			this.contextMenu.Size = new System.Drawing.Size(245, 274);
 			// 
@@ -147,8 +147,8 @@
 			// cmColors
 			// 
 			this.cmColors.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmBackColor,
-            this.cmForeColor});
+			this.cmBackColor,
+			this.cmForeColor});
 			this.cmColors.Name = "cmColors";
 			this.cmColors.Size = new System.Drawing.Size(244, 24);
 			this.cmColors.Text = "Colors";
@@ -271,6 +271,7 @@
 			this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
 			this.axWindowsMediaPlayer.Size = new System.Drawing.Size(252, 47);
 			this.axWindowsMediaPlayer.TabIndex = 4;
+			this.axWindowsMediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.SetPlayerInvisible);
 			// 
 			// MainForm
 			// 
@@ -321,7 +322,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem cmChoosFont;
 		private System.Windows.Forms.ToolStripMenuItem cmShowConsole;
-        private System.Windows.Forms.ToolStripMenuItem cmLoadOnWinStartup;
+		private System.Windows.Forms.ToolStripMenuItem cmLoadOnWinStartup;
 		private System.Windows.Forms.ToolStripMenuItem cmAlarm;
 		private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
 	}
