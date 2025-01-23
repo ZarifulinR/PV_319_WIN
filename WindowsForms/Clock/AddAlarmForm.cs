@@ -79,10 +79,10 @@ namespace Clock
 
 		private void AddAlarmForm_Load(object sender, EventArgs e)
 		{
-			for (int i = 0; i < clbWeekDays.Items.Count; i++)
-			{
-				clbWeekDays.SetItemChecked(i, true);
-			}
+			//for (int i = 0; i < clbWeekDays.Items.Count; i++)
+			//{
+			//	clbWeekDays.SetItemChecked(i, true);
+			//}
 			if (Alarm.Date != DateTime.MinValue)
 			{
 				cbUseDate.Checked = true;

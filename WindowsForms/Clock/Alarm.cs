@@ -37,7 +37,7 @@ namespace Clock
 			Console.WriteLine($"CopyConstructor:{this.GetHashCode()}");
 
 		}
-		//public static bool operator == (Alarm left,Alarm right)
+		//public static bool operator ==(Alarm left, Alarm right)
 		//{
 		//	return
 		//		left.Date == right.Date &&
@@ -53,7 +53,7 @@ namespace Clock
 		public override string ToString()
 		{
 			string info = "";
-			if (Date != DateTime.MinValue) info += Date;
+			if (Date != DateTime.MinValue) info += $"{Date}\t";
 			//info += Time;
 			info += DateTime.Today.Add(Time).ToString("HH:mm:ss");
 			info += "\t";
@@ -62,8 +62,20 @@ namespace Clock
 			info += $"{Message}\t";
 			return info;
 		}
-		
-		
+		public string ToFileString()
+		{
+			string info = "";
+			if (Date != DateTime.MinValue) info += $"{Date.Ticks },";
+			info += $",{Time.Ticks},";//ToString("HH:mm:ss");
+
+			info += $"{Weekdays.ToFileString()},";
+			info += $"{Filename},";
+			info += $"{Message},";
+			return info;
+		}
+	
+
+
 		public int CompareTo(Alarm other)
 		{
 

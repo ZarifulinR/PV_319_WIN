@@ -51,6 +51,7 @@ namespace Clock
 				{
 
 					addAlarm.Alarm = lbAlarms.SelectedItem as Alarm;
+					addAlarm.Location = new Point(this.Location.X + 25, this.Location.Y + 25);
 					if (addAlarm.ShowDialog() == DialogResult.OK)
 					{
 						lbAlarms.Items[lbAlarms.SelectedIndex] = addAlarm.Alarm;
