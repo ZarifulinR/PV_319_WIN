@@ -105,10 +105,10 @@ namespace Clock
 				{
 					string s_alarm = sr.ReadLine();
 					string[] s_alarm_parts = s_alarm.Split(',');
-					for (int i = 0; i < s_alarm_parts.Length; i++)
-					{
-						Console.Write(s_alarm_parts[i] + '\t');
-						Console.WriteLine();
+					//for (int i = 0; i < s_alarm_parts.Length; i++)
+					//{
+					//	Console.Write(s_alarm_parts[i] + '\t');
+					//	Console.WriteLine();
 						Alarm alarm = new Alarm
 							(
 							s_alarm_parts[0] == "" ? new DateTime() : new DateTime(Convert.ToInt64(s_alarm_parts[0])),
@@ -119,7 +119,7 @@ namespace Clock
 							);
 
 						alarms.LB_Alarms.Items.Add(alarm);
-					}
+					//}
 
 				}
 						sr.Close();
