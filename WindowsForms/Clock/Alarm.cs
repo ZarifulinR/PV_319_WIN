@@ -66,7 +66,7 @@ namespace Clock
 		{
 			string info = "";
 			if (Date != DateTime.MinValue) info += $"{Date.Ticks },";
-			info += $",{Time.Ticks},";//ToString("HH:mm:ss");
+			info += $"{Time.Ticks},";//ToString("HH:mm:ss");
 
 			info += $"{Weekdays.ToFileString()},";
 			info += $"{Filename},";
